@@ -63,7 +63,7 @@ jobs:
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2 # pinned version
+        uses: azure/webapps-deploy@05ac4e98bfa0f856e6669624239291c73ca27698 # pinned version
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           slot-name: 'Production'
