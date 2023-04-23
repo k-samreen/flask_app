@@ -66,5 +66,6 @@ jobs:
         uses: azure/webapps-deploy@v2 # pinned version
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D55AD22092DA483698D51040BB5C09E8 }}
 
