@@ -2,7 +2,7 @@ name: Build and deploy Python app to Azure Web App
 
 env:
   AZURE_WEBAPP_NAME: flaskapii   # set this to your application's name
-  PYTHON_VERSION: '3.10'               # set this to the Python version to use
+  PYTHON_VERSION: '3.10'        # set this to the Python version to use
 
 on:
   push:
@@ -52,7 +52,7 @@ jobs:
     needs: build
     environment:
       name: 'production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: flaskapii.azurewebsites.net
 
     steps:
       - name: Download artifact from build job
@@ -60,6 +60,10 @@ jobs:
         with:
           name: python-app
           path: .
+
+      - name: Set Azure Web App name
+        run: |
+          echo "::set-env name=AZURE_WEBAPP_NAME::flaskapii"
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
